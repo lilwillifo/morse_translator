@@ -40,4 +40,16 @@ class Translator
                     "0" => "-----",
                     " " => " "}
   end
+
+
+  def eng_to_morse(string)
+    morse_array = string.chars.map do |char|
+      @dictionary[char]
+    end
+    morse_array.join
+    # string
+  end
+
 end
+
+puts Translator.new.eng_to_morse("hello world")
