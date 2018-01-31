@@ -50,4 +50,9 @@ class TranslatorTest < Minitest::Test
     assert_equal ".. .--- ..-. .- ..-....-...", morse
   end
 
+  def test_morse_to_eng
+    eng = @translator.morse_to_eng(".... . .-.. .-.. ---  .-- --- .-. .-.. -..")
+    assert_equal "hello world", eng
+  end
+
 end

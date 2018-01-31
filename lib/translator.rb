@@ -58,4 +58,18 @@ class Translator
     File.open(filename, "r").read.chomp
   end
 
+  def morse_to_eng(morse)
+    words_array = morse.split("  ")  # returns ["word 1", "word 2"]
+      words_array.map do |word|
+      word.split
+    end
+
+    eng_array = morse.split().map do |morse|
+      @dictionary.key(morse)
+    end
+    eng_array.join
+  end
+
 end
+
+puts Translator.new.morse_to_eng(".... . .-.. .-.. ---  .-- --- .-. .-.. -..")
