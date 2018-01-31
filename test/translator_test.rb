@@ -19,12 +19,24 @@ class TranslatorTest < Minitest::Test
     assert_instance_of String, morse
   end
 
-  #if time, test for edge cases - capital letters, nonstring
+  #if time, test for edge case - nonstring input
   def test_eng_to_morse_returns_morse
     morse = @translator.eng_to_morse("hello world")
     morse2 = @translator.eng_to_morse("marg")
     assert_equal "......-...-..--- .-----.-..-..-..", morse
     assert_equal "--.-.-.--.", morse2
+  end
+
+  def test_eng_to_morse_works_with_capitalization
+    morse = @translator.eng_to_morse("Hello World")
+    morse2 = @translator.eng_to_morse("HeLLo wOrLd")
+    assert_equal "......-...-..--- .-----.-..-..-..", morse
+    assert_equal morse, morse2
+  end
+
+  def test_eng_to_morse_works_with_numbers
+    morse = @translator.eng_to_morse("There are 3 ships")
+    assert_equal "-......-.. .-.-.. ...-- ..........--....", morse
   end
 
 end
