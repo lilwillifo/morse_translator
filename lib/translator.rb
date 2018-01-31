@@ -45,7 +45,7 @@ class Translator
 
 
   def eng_to_morse(string)
-    morse_array = string.downcase.chars.map do |char|
+    morse_array = string.to_s.downcase.chars.map do |char|
       @dictionary[char]
     end
     morse_array.join
