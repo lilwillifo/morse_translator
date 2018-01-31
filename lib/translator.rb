@@ -1,3 +1,5 @@
+require 'pry'
+
 class Translator
   attr_reader :dictionary
 
@@ -59,17 +61,15 @@ class Translator
   end
 
   def morse_to_eng(morse)
-    words_array = morse.split("  ")  # returns ["word 1", "word 2"]
-      words_array.map do |word|
-      word.split
+    words_array = morse.split("  ")
+    # returns ["word 1 in morse", "word 2 in morse"]
+      english = words_array.map do |word|
+      char_array = word.split.map do |char|
+        @dictionary.key(char)
+      end
+      char_array.join
     end
-
-    eng_array = morse.split().map do |morse|
-      @dictionary.key(morse)
+    english.join(" ")
     end
-    eng_array.join
-  end
 
 end
-
-puts Translator.new.morse_to_eng(".... . .-.. .-.. ---  .-- --- .-. .-.. -..")
