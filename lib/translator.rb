@@ -49,4 +49,13 @@ class Translator
     morse_array.join
   end
 
+  def from_file(filename)
+    string = read_file(filename)
+    eng_to_morse(string)
+  end
+
+  def read_file(filename)
+    File.open(filename, "r").read.chomp
+  end
+
 end

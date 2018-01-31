@@ -39,4 +39,15 @@ class TranslatorTest < Minitest::Test
     assert_equal "-......-.. .-.-.. ...-- ..........--....", morse
   end
 
+  def test_read_file
+    morse = @translator.read_file("./data/input.txt")
+    assert_instance_of String, morse
+    assert_equal "I am in a file", morse
+  end
+
+  def test_from_file
+    morse = @translator.from_file("./data/input.txt")
+    assert_equal ".. .--- ..-. .- ..-....-...", morse
+  end
+
 end
